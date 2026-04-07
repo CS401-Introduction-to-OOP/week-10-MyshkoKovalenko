@@ -51,7 +51,7 @@ do
 
 void printHelp()
 {
-    Console.WriteLine("h - help\ncc [name] [role] - create character\nd - damage random character\nhl - heal random character\ng - give random character gold\nllp - level random character up\ns - skip turn\nel [type] - show event log (opt. filter by particular type)\np [-a](alive) [-h <level>](higher than level) [-o](ordered by hp) [-n](names) [-m](max hp) [-r](grouped by role)\nq - quit");
+    Console.WriteLine("h - help\ncc [name] [role] - create character\nd - damage random character\nhl - heal random character\ng - give random character gold\nllp - level random character up\ns - skip turn\nel [type] - show event log (opt. filter by particular type)\np [-a](alive) [-h <level>](higher than level) [-o](ordered by hp) [-n](names) [-m](max level character) [-r](grouped by role)\nq - quit");
 }
 
 void createCharacter()
