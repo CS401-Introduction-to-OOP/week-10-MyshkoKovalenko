@@ -10,7 +10,7 @@ class Event
 
     public int Value { get; }
 
-    Event(string description, EventType type, int value)
+    public Event(string description, EventType type, int value)
     {
         TurnNumber = nextTurn++;
         Description = description;

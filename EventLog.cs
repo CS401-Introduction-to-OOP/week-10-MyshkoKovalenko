@@ -4,7 +4,7 @@ class EventLog : IEnumerable<Event>
 {
     List<Event> _events;
 
-    EventLog()
+    public EventLog()
     {
         _events = new List<Event>();
     }

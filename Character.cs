@@ -12,7 +12,7 @@ class Character
 
     public bool IsAlive { get => HP > 0; }
 
-    Character(string name, Role role)
+    public Character(string name, Role role)
     {
         Name = name;
         Role = role;
