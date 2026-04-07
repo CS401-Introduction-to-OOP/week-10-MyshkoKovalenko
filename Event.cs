@@ -17,11 +17,13 @@ class Event
         Type = type;
         Value = value;
     }
+
+    public override string ToString() => $"{TurnNumber} | {Description} | Type: {Type} | Value : {Value}";
 }
 
 enum EventType
 {
-    Attack,
+    Damage,
     Heal,
     LevelUp,
     Loot,
