@@ -24,5 +24,6 @@ enum EventType
     Attack,
     Heal,
     LevelUp,
-    Loot
+    Loot,
+    Skip
 }
