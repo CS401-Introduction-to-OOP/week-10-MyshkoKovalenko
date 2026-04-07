@@ -1,4 +1,6 @@
-﻿Random rnd = new Random();
+﻿using System.Formats.Asn1;
+
+Random rnd = new Random();
 
 Party myParty = new Party();
 EventLog myLog = new EventLog();
@@ -114,7 +116,14 @@ void partyPrint()
     Character character;
     IEnumerator<IGrouping<Role, Character>> gr;
 
-    if (userTokens[1] == "-a")
+    if (userTokens.Length == 1)
+    {
+        foreach(Character c in myParty)
+        {
+            Console.WriteLine(c);
+        }
+    }
+    else if (userTokens[1] == "-a")
     {
         en = myParty.GetAliveEnumerator();
         while (en.MoveNext())
