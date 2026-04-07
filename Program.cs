@@ -24,7 +24,7 @@ do
             createCharacter();
         else if (userTokens[0] == "d")
             damageRandom();
-        else if (userTokens[0] == "h")
+        else if (userTokens[0] == "hl")
             healRandom();
         else if (userTokens[0] == "g")
             giveRandomGold();
@@ -51,7 +51,7 @@ do
 
 void printHelp()
 {
-    Console.WriteLine("h - help\ncc [name] [role] - create character\nd - damage random character\nh - heal random character\ng - give random character gold\nllp - level random character up\ns - skip turn\nel [type] - show event log (opt. filter by particular type)\np [-a](alive) [-h <level>](higher than level) [-o](ordered by hp) [-n](names) [-m](max hp) [-r](grouped by role)\nq - quit");
+    Console.WriteLine("h - help\ncc [name] [role] - create character\nd - damage random character\nhl - heal random character\ng - give random character gold\nllp - level random character up\ns - skip turn\nel [type] - show event log (opt. filter by particular type)\np [-a](alive) [-h <level>](higher than level) [-o](ordered by hp) [-n](names) [-m](max hp) [-r](grouped by role)\nq - quit");
 }
 
 void createCharacter()
@@ -64,7 +64,11 @@ void damageRandom()
     IEnumerator<Character> en = myParty.GetAliveEnumerator();
 
     while (en.MoveNext())
-        en.Current.Damage(rnd.Next() % 20);
+    {
+        int val = rnd.Next() % 20;
+        en.Current.Damage(val);
+        myLog.AddEvent(new Event($"{val} damage was inflicted to {en.Current.Name}.", EventType.Damage, val));
+    }
 }
 
 void healRandom()
@@ -72,7 +76,11 @@ void healRandom()
     IEnumerator<Character> en = myParty.GetAliveEnumerator();
 
     while (en.MoveNext())
-        en.Current.Heal(rnd.Next() % 20);
+    {
+        int val = rnd.Next() % 20;
+        en.Current.Heal(val);
+        myLog.AddEvent(new Event($"{val} heal was inflicted to {en.Current.Name}.", EventType.Heal, val));
+    }
 }
 
 void giveRandomGold()
@@ -80,7 +88,11 @@ void giveRandomGold()
     IEnumerator<Character> en = myParty.GetAliveEnumerator();
 
     while (en.MoveNext())
-        en.Current.Loot(rnd.Next() % 20);
+    {
+        int val = rnd.Next() % 20;
+        en.Current.Loot(val);
+        myLog.AddEvent(new Event($"{val} gold was given to {en.Current.Name}.", EventType.Loot, val));
+    }
 }
 
 void levelUpRandom()
@@ -88,7 +100,11 @@ void levelUpRandom()
     IEnumerator<Character> en = myParty.GetAliveEnumerator();
 
     while (en.MoveNext())
-        en.Current.LevelUp(rnd.Next() % 10);
+    {
+        int val = rnd.Next() % 5;
+        en.Current.LevelUp(val);
+        myLog.AddEvent(new Event($"{val} levels was gain by {en.Current.Name}.", EventType.LevelUp, val));
+    }
 }
 
 void skipTurn()
